@@ -1,0 +1,27 @@
+name: Django GitHub Action
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2
+      matrix:
+        python-version: [3.9, 3.10]
+  
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python Version ${{ matrix.python-version }}
+        uses: actions/setup-python@6.2.0
+        with: 
+          python-version: ${{ matrix.python-version }}
+      - name: install dependencies
+        run: |
+          python -m --upgrade pip
+          pip3 install -r requirements.txt
+
+      - name: lint with flake8
+        run: |
+          flake8.
