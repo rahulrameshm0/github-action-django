@@ -19,7 +19,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: install dependencies
         run: |
-          python -m --upgrade pip
+          python -m pip --upgrade pip
           pip3 install -r requirements.txt
 
       - name: lint with flake8
